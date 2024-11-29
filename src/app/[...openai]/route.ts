@@ -21,7 +21,11 @@ export const maxDuration = 30;
 async function getAIModelClient(provider: string, model: string) {
   switch (provider.toLowerCase()) {
     case "openai":
-      return openai(model);
+      const openaiClient = createOpenAI({
+        apiKey: env.OPENAI_API_KEY,
+        baseURL: 'https://api.deepseek.com'
+      });
+      return openaiClient(model);
     case "anthropic": {
       const anthropicClient = createAnthropic({
         apiKey: env.ANTHROPIC_API_KEY,
@@ -94,7 +98,7 @@ export async function POST(
       throw new Error("Provider is not defined in the default configuration");
     }
 
-    const aiModel = await getAIModelClient(provider, model);
+    const aiModel = await getAIModelClient(provider, 'deepseek-coder');
 
     let modifiedMessages = messages;
 

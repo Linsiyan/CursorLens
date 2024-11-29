@@ -331,9 +331,9 @@ export default function LogDetails({ logId }: LogDetailsProps) {
             <TableCell>{log.metadata.inputTokens}</TableCell>
             <TableCell>{log.metadata.outputTokens}</TableCell>
             <TableCell>{log.metadata.totalTokens}</TableCell>
-            <TableCell>${log.metadata.inputCost.toFixed(4)}</TableCell>
-            <TableCell>${log.metadata.outputCost.toFixed(4)}</TableCell>
-            <TableCell>${log.metadata.totalCost.toFixed(4)}</TableCell>
+            <TableCell>${log.metadata.inputCost?.toFixed(4)}</TableCell>
+            <TableCell>${log.metadata.outputCost?.toFixed(4)}</TableCell>
+            <TableCell>${log.metadata.totalCost?.toFixed(4)}</TableCell>
           </TableRow>
         </TableBody>
       </Table>
